@@ -1,0 +1,29 @@
+@model BookMangement.Models.Book
+
+<form asp-action="Create" asp-controller="Books" method="post">
+    <div class="row">
+
+    <div class="col-md-12">
+
+    <div class="form-group">
+        <label>Book Name </label>
+        <input asp-for="Name" type="text" class="form-control" placeholder="please enter book name" >
+
+        </div>
+
+       <div class="form-group">
+            <div asp-validation-summary="All" class="text-danger"> </div>
+        </div>
+
+               <div class="form-group">
+                <button type="submit" class="btn-success">Create Book</button>
+                <a asp-action="Index" asp-controller="Books" class="btn"> Cancel </a>
+        </div>
+
+
+
+
+
+        </div>
+        </div>
+        </form> 

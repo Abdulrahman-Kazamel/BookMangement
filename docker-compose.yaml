@@ -1,0 +1,29 @@
+version: '3'
+networks:
+  abdulrahman:
+    external:
+      name: abdulrahman
+
+services:
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:2017-CU31-ubuntu-18.04
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Docker2021"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"
+    networks:
+      - abdulrahman
+  book-app:
+    build: .
+    environment:
+      DatabaseServer: "mssql-server"
+      DatabasePort: "1433"
+      DatabaseUser: "SA"
+      DatabasePassword: "Docker2021"
+      DatabaseName: "booksdb"
+    ports:
+      - "80:80"
+    networks:
+      - abdulrahman
